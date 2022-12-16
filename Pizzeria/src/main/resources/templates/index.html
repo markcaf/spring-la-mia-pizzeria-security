@@ -30,7 +30,7 @@
 				<th>Prezzo</th>
 				<th>Ingredienti</th>
 				<th>Promozione</th>
-				<th>Azioni</th>
+				<th sec:authorize="hasAuthority('admin')">Azioni</th>
 			</tr>
 			<tr th:each="pizza : ${pizze}" th:object="${pizza}">
 				<td th:text="*{id}"></td>
@@ -39,7 +39,7 @@
 				<td th:text="*{prezzo}"></td>
 				<td th:text="*{ingredienti}"></td>
 				<td th:text="*{promozione}"></td>
-				<td>
+				<td sec:authorize="hasAuthority('admin')">
 					<a th:href="@{/pizza/{id} (id=*{id})}" class="btn btn-sm btn-success mb-1">Visualizza</a>
 					<a th:href="@{/pizza/update/{id}(id=${pizza.id})}" class="btn btn-sm btn-primary mb-1">Modifica</a>
 					<a th:href="@{/pizza/delete/{id}(id=${pizza.id})}" class="btn btn-sm btn-danger mb-1">Rimuovi</a>
